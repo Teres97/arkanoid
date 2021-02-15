@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BrickManager : MonoBehaviour
 {
@@ -36,15 +37,29 @@ public class BrickManager : MonoBehaviour
     public Color[] BricksColors;
     private float shiftAmount = 0.365f;
 
+    public void LoadLevel(int level)
+    {
+        this.CurrentLevel = level;
+        this.ClearRemainingBrick();
+        this.GenerateBricks();
+    }
+
+    private void ClearRemainingBrick(){
+        foreach (Brick brick in this.RemainingBricks.ToList())
+        {
+            Destroy(brick.gameObject);
+        }
+    }
+
     private void Start() {
         this.BricksContainer = new GameObject("BricksContainer");
-        this.RemainingBricks = new List<Brick>();
         this.LevelsData = this.LoadLevelsData();
         this.GenerateBricks();
     }
 
     private void GenerateBricks()
     {
+        this.RemainingBricks = new List<Brick>();
         int[,] currentLevelData = this.LevelsData[this.CurrentLevel];
         float currentSpawnX = initialBrickSpawnPositionX;
         float currentSpawnY = initialBrickSpawnPositionY;

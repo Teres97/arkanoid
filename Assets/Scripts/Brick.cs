@@ -22,6 +22,7 @@ public class Brick : MonoBehaviour
    private void ApplyCollisionLogic(Ball ball){
         this.HitPoints--;
         if(this.HitPoints<=0){
+            BrickManager.Instance.RemainingBricks.Remove(this);
             OnBreakDestruction?.Invoke(this);
             SpawnDestroyEffect();
             Destroy(this.gameObject);

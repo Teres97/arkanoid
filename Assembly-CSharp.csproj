@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\BallsManager.cs" />
      <Compile Include="Assets\Scripts\Brick.cs" />
      <Compile Include="Assets\Scripts\BrickManager.cs" />
+     <Compile Include="Assets\Scripts\DeathWall.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <None Include="Assets\Resources\levels.txt" />
